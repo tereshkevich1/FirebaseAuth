@@ -11,8 +11,7 @@ class PhoneNumberViewModel : ViewModel() {
     var countryCode by mutableStateOf(CountryCode.BY)
     var phoneNumber by mutableStateOf("")
 
-    private val phoneNumberLength: Int
-        get() = countryCode.phoneNumberLength
+    private val phoneNumberLength = countryCode.phoneNumberLength
 
     fun updatePhoneNumber(newText: String) {
         val digitsOnly = PhoneNumberConstants.NUMERIC_REGEX.replace(newText, "")
