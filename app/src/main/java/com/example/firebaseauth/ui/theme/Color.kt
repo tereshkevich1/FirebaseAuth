@@ -22,3 +22,6 @@ val DisabledTextColor = Color(0xFF1A1B1E)
 val PrimaryButtonContainerColor = Color(0xFF3983EC)
 val CursorThumbColor = Color(0xFF3983EC)
 val PrimaryButtonContentColor = Color(0xFFFFFFFF)
+
+val BorderColor = Color(0xFFF0F0F0)
+

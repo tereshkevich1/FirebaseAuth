@@ -54,7 +54,7 @@ fun CountryCodeButton(
                 painter = flagPainter,
                 contentDescription = stringResource(R.string.flag),
                 modifier = Modifier
-                    .size(DpSpSize.flagIconSize)
+                    .size(DpSpSize.smallFlagSize)
                     .clip(CircleShape),
                 contentScale = ContentScale.FillHeight,
             )

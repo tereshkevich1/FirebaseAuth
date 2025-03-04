@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import com.example.firebaseauth.R
-import com.example.firebaseauth.presentation.login_screen.util.CountryCode
+import com.example.firebaseauth.presentation.util.Country
 import com.example.firebaseauth.presentation.login_screen.util.PhoneNumberTransformation
 import com.example.firebaseauth.ui.theme.CursorThumbColor
 import com.example.firebaseauth.ui.theme.DpSpSize
@@ -34,7 +34,7 @@ import com.example.firebaseauth.ui.theme.PrimaryTextColor
 
 @Composable
 fun PhoneNumberInputRow(
-    countryCode: CountryCode,
+    country: Country,
     phoneNumber: String,
     onPhoneNumberChange: (String) -> Unit,
     onCountryCodeButtonClick: () -> Unit,
@@ -44,12 +44,12 @@ fun PhoneNumberInputRow(
     Row(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.height(DpSpSize.inputFieldHeight)
+        modifier = modifier.height(DpSpSize.textFieldHeight)
     ) {
         CountryCodeButton(
             onClick = onCountryCodeButtonClick,
-            countryCode = countryCode.code,
-            flagPainter = painterResource(countryCode.flagResId),
+            countryCode = country.code,
+            flagPainter = painterResource(country.flagResId),
             textStyle = textStyle
         )
         Spacer(modifier = Modifier.width(DpSpSize.paddingSmall))
@@ -64,7 +64,7 @@ fun PhoneNumberInputRow(
                 value = phoneNumber,
                 onValueChange = onPhoneNumberChange,
                 singleLine = true,
-                visualTransformation = PhoneNumberTransformation(countryCode),
+                visualTransformation = PhoneNumberTransformation(country),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number
                 ),

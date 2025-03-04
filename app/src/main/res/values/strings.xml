@@ -14,4 +14,5 @@
     <string name="buyupix">Buyupix</string>
     <string name="enter_phone_number_message">Enter your phone number. We will send you a confirmation code there</string>
     <string name="lets_get_started">Let\'s get started</string>
+    <string name="arrow_left">Back icon</string>
 </resources>

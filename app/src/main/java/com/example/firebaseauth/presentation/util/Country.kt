@@ -1,9 +1,9 @@
-package com.example.firebaseauth.presentation.login_screen.util
+package com.example.firebaseauth.presentation.util
 
 import androidx.annotation.DrawableRes
 import com.example.firebaseauth.R
 
-enum class CountryCode(
+enum class Country(
     val code: String,
     val phoneNumberLength: Int,
     @DrawableRes val flagResId: Int
