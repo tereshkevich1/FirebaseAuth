@@ -8,7 +8,7 @@ import com.example.firebaseauth.presentation.util.Country
 import com.example.firebaseauth.presentation.login_screen.util.PhoneNumberConstants
 
 class PhoneNumberViewModel : ViewModel() {
-    var country by mutableStateOf(Country.BY)
+    var country by mutableStateOf(Country.US)
     var phoneNumber by mutableStateOf("")
 
     private val phoneNumberLength = country.phoneNumberLength

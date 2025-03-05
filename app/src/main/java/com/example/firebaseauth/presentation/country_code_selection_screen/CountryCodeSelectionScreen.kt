@@ -62,7 +62,7 @@ fun CountryCodeSelectionScreen(onBack: () -> Unit, onSelect: () -> Unit) {
                 .border(width = 0.5.dp, color = BorderColor, shape = cardClipShape),
             contentPadding = PaddingValues(horizontal = lazyColumnHorizontalPadding)
         ) {
-            items(Country.entries) { country: Country ->
+            items(Country.entries, key = { country -> country.name }) { country: Country ->
                 Spacer(modifier = Modifier.height(lazyColumnSpacingHeight))
                 CountryItem(
                     onClick = { onSelect() },
@@ -91,7 +91,7 @@ fun CountryCodeSelectionScreenPreview() {
                     .background(SurfaceBackground.copy(alpha = 0.5f))
                     .padding(it)
             ) {
-                CountryCodeSelectionScreen({},{})
+                CountryCodeSelectionScreen({}, {})
             }
         }
     }
