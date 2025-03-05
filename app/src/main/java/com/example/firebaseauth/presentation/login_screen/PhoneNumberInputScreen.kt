@@ -15,6 +15,7 @@ import com.example.firebaseauth.R
 import com.example.firebaseauth.presentation.CountryCodeViewModel
 import com.example.firebaseauth.presentation.login_screen.components.PhoneNumberInputRow
 import com.example.firebaseauth.presentation.login_screen.components.PrimaryButton
+import com.example.firebaseauth.presentation.otp_verification_screen.components.formatResendText
 import com.example.firebaseauth.presentation.util.components.HeaderWithDescription
 import com.example.firebaseauth.ui.theme.DpSpSize
 import com.example.firebaseauth.ui.theme.SurfaceBackground

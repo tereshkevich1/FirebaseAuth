@@ -13,10 +13,10 @@ fun AppNavGraph(
     NavHost(
         navController = navController,
         startDestination = AuthDestinations.AuthNav,
-        enterTransition = { enterFadeTransaction() },
-        exitTransition = { exitFadeTransaction() },
-        popEnterTransition = { enterFadeTransaction() },
-        popExitTransition = { exitFadeTransaction() },
+        enterTransition = { enterSlideTransition() },
+        exitTransition = { exitSlideTransition() },
+        popEnterTransition = { popEnterSlideTransition() },
+        popExitTransition = { popExitSlideTransition() },
         modifier = modifier
     ) {
         addAuthRoute(navController)

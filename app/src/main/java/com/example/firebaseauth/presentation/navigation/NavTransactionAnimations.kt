@@ -2,19 +2,26 @@ package com.example.firebaseauth.presentation.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 
-fun enterFadeTransaction(): EnterTransition = fadeIn(
-    animationSpec = tween(
-        300, easing = LinearEasing
-    )
+fun enterSlideTransition(): EnterTransition = slideInHorizontally(
+    initialOffsetX = { fullWidth -> fullWidth },
+    animationSpec = tween(400)
 )
 
-fun exitFadeTransaction(): ExitTransition = fadeOut(
-    animationSpec = tween(
-        300, easing = LinearEasing
-    )
+fun exitSlideTransition(): ExitTransition = slideOutHorizontally(
+    targetOffsetX = { fullWidth -> -fullWidth },
+    animationSpec = tween(400)
+)
+
+fun popEnterSlideTransition(): EnterTransition = slideInHorizontally(
+    initialOffsetX = { fullWidth -> -fullWidth },
+    animationSpec = tween(400)
+)
+
+fun popExitSlideTransition(): ExitTransition = slideOutHorizontally(
+    targetOffsetX = { fullWidth -> fullWidth },
+    animationSpec = tween(400)
 )

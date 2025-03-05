@@ -20,7 +20,7 @@ fun HeaderWithDescription(
     Column(modifier = modifier) {
         Text(
             text = headerText,
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.displayMedium,
             color = PrimaryTextColor
         )
         Spacer(modifier = Modifier.height(DpSpSize.paddingSmall))

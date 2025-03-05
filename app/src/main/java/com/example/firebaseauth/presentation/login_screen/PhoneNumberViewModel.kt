@@ -4,7 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.firebaseauth.presentation.login_screen.util.PhoneNumberConstants
+import com.example.firebaseauth.presentation.util.PhoneNumberConstants
 
 class PhoneNumberViewModel : ViewModel() {
     var phoneNumber by mutableStateOf("")

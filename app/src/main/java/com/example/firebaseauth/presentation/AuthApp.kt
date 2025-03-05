@@ -8,12 +8,16 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.presentation.navigation.AppNavGraph
 import com.example.firebaseauth.ui.theme.FirebaseAuthTheme
+import com.example.firebaseauth.ui.theme.SurfaceBackground
 
 @Composable
 fun AuthApp() {
     val navController = rememberNavController()
     FirebaseAuthTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            containerColor = SurfaceBackground
+        ) { innerPadding ->
             AppNavGraph(
                 navController = navController,
                 modifier = Modifier.padding(innerPadding)

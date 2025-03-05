@@ -17,6 +17,7 @@ val SurfaceBackground = Color(0xFFFAFBFC)
 
 val PrimaryTextColor = Color(0xFF1A1B1E)
 val HintTextColor = Color(0xFF787E8A)
+val ClickableTextColor = Color(0xFF3983EC)
 val DisabledTextColor = Color(0xFF1A1B1E)
 
 val DisabledContainerColor = Color(0xFFAECBF5)

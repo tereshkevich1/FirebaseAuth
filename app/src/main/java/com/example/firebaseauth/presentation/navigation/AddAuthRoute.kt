@@ -32,7 +32,7 @@ fun NavGraphBuilder.countryCodeSelectionDestination(navController: NavController
 
 fun NavGraphBuilder.otpVerificationDestination(navController: NavController) {
     composable<AuthDestinations.OtpVerificationScreen> {
-        OtpVerificationScreen()
+        OtpVerificationScreen(onBack = { navController.popBackStack() })
     }
 }
 
@@ -41,9 +41,10 @@ fun NavGraphBuilder.phoneInputDestination(navController: NavController) {
         val parentEntry = remember { navController.getBackStackEntry(AuthDestinations.AuthNav) }
         PhoneNumberInputScreen(
             onCountryCodeButtonClick = { navController.navigate(AuthDestinations.CountryCodeSelectionScreen) },
-            onContinueButtonClick = {},
+            onContinueButtonClick = { navController.navigate(AuthDestinations.OtpVerificationScreen) },
             countryCodeViewModel = hiltViewModel(parentEntry),
             phoneNumberViewModel = hiltViewModel(parentEntry)
         )
     }
 }
+

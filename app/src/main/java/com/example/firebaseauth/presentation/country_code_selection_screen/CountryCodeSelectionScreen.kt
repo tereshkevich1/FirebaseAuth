@@ -33,7 +33,6 @@ import com.example.firebaseauth.ui.theme.DpSpSize.lazyColumnSpacingHeight
 import com.example.firebaseauth.ui.theme.DpSpSize.paddingMedium
 import com.example.firebaseauth.ui.theme.DpSpSize.screenHorizontalPadding
 import com.example.firebaseauth.ui.theme.PrimaryTextColor
-import com.example.firebaseauth.ui.theme.SurfaceBackground
 
 @Composable
 fun CountryCodeSelectionScreen(
@@ -47,15 +46,12 @@ fun CountryCodeSelectionScreen(
     val horizontalPadding = screenHorizontalPadding
     val cardClipShape = MaterialTheme.shapes.medium
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(SurfaceBackground)
-    ) {
+    Column(modifier = Modifier.fillMaxSize()) {
         BackNavigationRow(onBack = onBack)
+
         Text(
             text = stringResource(R.string.country),
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.displayMedium,
             color = PrimaryTextColor,
             modifier = Modifier.padding(horizontal = horizontalPadding)
         )
