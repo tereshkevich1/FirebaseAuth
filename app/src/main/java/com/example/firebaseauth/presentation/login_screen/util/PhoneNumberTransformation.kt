@@ -8,12 +8,13 @@ import com.example.firebaseauth.presentation.login_screen.util.number_formatters
 import com.example.firebaseauth.presentation.login_screen.util.number_formatters.FormatRU
 import com.example.firebaseauth.presentation.login_screen.util.number_formatters.FormatUS
 import com.example.firebaseauth.presentation.login_screen.util.number_formatters.NumberFormat
+import com.example.firebaseauth.presentation.util.Country
 
-class PhoneNumberTransformation(countryCode: CountryCode) : VisualTransformation {
-    private val formatter: NumberFormat = when (countryCode) {
-        CountryCode.US -> FormatUS()
-        CountryCode.RU -> FormatRU()
-        CountryCode.BY -> FormatBY()
+class PhoneNumberTransformation(country: Country) : VisualTransformation {
+    private val formatter: NumberFormat = when (country) {
+        Country.US -> FormatUS()
+        Country.RU -> FormatRU()
+        Country.BY -> FormatBY()
     }
 
     override fun filter(text: AnnotatedString): TransformedText {

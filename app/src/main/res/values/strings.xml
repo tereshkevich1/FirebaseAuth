@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">FirebaseAuth</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="code">Code</string>
+    <string name="enter_code">Enter the code you received</string>
+    <string name="no_code_received">No code received?</string>
+    <string name="resend_code">Resend the code in</string>
+    <string name="flag">flag</string>
+    <string name="belarus">Belarus</string>
+    <string name="russia">Russia</string>
+    <string name="usa">USA</string>
+    <string name="country">Country</string>
+    <string name="continue_text">Continue</string>
+    <string name="buyupix">Buyupix</string>
+    <string name="enter_phone_number_message">Enter your phone number. We will send you a confirmation code there</string>
+    <string name="lets_get_started">Let\'s get started</string>
+    <string name="arrow_left">Back icon</string>
 </resources>

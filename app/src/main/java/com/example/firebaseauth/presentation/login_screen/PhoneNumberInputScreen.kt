@@ -1,20 +1,25 @@
 package com.example.firebaseauth.presentation.login_screen
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.firebaseauth.R
 import com.example.firebaseauth.presentation.login_screen.components.PhoneNumberInputRow
+import com.example.firebaseauth.presentation.login_screen.components.PrimaryButton
+import com.example.firebaseauth.presentation.util.components.HeaderWithDescription
 import com.example.firebaseauth.ui.theme.DpSpSize
 import com.example.firebaseauth.ui.theme.FirebaseAuthTheme
+import com.example.firebaseauth.ui.theme.SurfaceBackground
 
 @Composable
 fun PhoneNumberInputScreen() {
@@ -27,39 +32,55 @@ fun PhoneNumberInputScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(SurfaceBackground)
             .padding(
                 start = horizontalPadding,
                 end = horizontalPadding,
                 top = topPadding
             )
     ) {
-        Text(
-            text = " ",
-            style = MaterialTheme.typography.headlineMedium
-        )
-        Spacer(modifier = Modifier.height(DpSpSize.paddingSmall))
-        Text(
-            text = " ",
-            style = MaterialTheme.typography.bodyMedium
+
+        HeaderWithDescription(
+            headerText = stringResource(R.string.lets_get_started),
+            descriptionText = stringResource(R.string.enter_phone_number_message)
         )
 
         Spacer(modifier = Modifier.height(DpSpSize.paddingLarge))
 
         PhoneNumberInputRow(
-            code = viewModel.countryCode,
+            country = viewModel.country,
             phoneNumber = viewModel.phoneNumber,
             onPhoneNumberChange = { viewModel.updatePhoneNumber(it) },
+            onCountryCodeButtonClick = {},
             modifier = Modifier
+        )
+
+        Spacer(modifier = Modifier.height(DpSpSize.paddingMedium))
+
+        PrimaryButton(
+            onClick = {},
+            text = stringResource(R.string.continue_text)
         )
     }
 }
+
 
 @Composable
 @Preview
 fun PHNIPreview() {
     FirebaseAuthTheme {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            PhoneNumberInputScreen()
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(SurfaceBackground.copy(alpha = 0.5f))
+                    .padding(it)
+            ) {
+                PhoneNumberInputScreen()
+            }
         }
     }
 }
