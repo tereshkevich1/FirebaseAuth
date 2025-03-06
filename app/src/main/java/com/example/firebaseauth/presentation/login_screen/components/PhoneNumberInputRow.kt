@@ -66,7 +66,7 @@ fun PhoneNumberInputRow(
                 singleLine = true,
                 visualTransformation = PhoneNumberTransformation(country),
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Number
+                    keyboardType = KeyboardType.NumberPassword
                 ),
                 placeholder = {
                     Text(

@@ -17,8 +17,11 @@ val SurfaceBackground = Color(0xFFFAFBFC)
 
 val PrimaryTextColor = Color(0xFF1A1B1E)
 val HintTextColor = Color(0xFF787E8A)
+val ClickableTextColor = Color(0xFF3983EC)
 val DisabledTextColor = Color(0xFF1A1B1E)
 
+val DisabledContainerColor = Color(0xFFAECBF5)
+val DisabledContentColor = Color(0xFF767B81)
 val PrimaryButtonContainerColor = Color(0xFF3983EC)
 val CursorThumbColor = Color(0xFF3983EC)
 val PrimaryButtonContentColor = Color(0xFFFFFFFF)

@@ -4,7 +4,7 @@
     <string name="code">Code</string>
     <string name="enter_code">Enter the code you received</string>
     <string name="no_code_received">No code received?</string>
-    <string name="resend_code">Resend the code in</string>
+    <string name="resend_code">Resend the code in %1$d:%2$02d</string>
     <string name="flag">flag</string>
     <string name="belarus">Belarus</string>
     <string name="russia">Russia</string>
