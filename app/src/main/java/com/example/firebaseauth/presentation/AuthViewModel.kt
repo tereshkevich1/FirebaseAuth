@@ -4,7 +4,7 @@ import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.firebaseauth.domain.model.NetworkResult
+import com.example.firebaseauth.data.NetworkResult
 import com.example.firebaseauth.domain.use_case.SignInWithPhoneCredentialUseCase
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -75,7 +75,7 @@ class AuthViewModel @Inject constructor(
     fun verifyPhoneNumberWithCode(code: String) {
         storedVerificationId?.let { verificationId ->
             val credential = PhoneAuthProvider.getCredential(verificationId, code)
-           // signIn(credential)
+            // signIn(credential)
         }
     }
 
@@ -91,11 +91,13 @@ class AuthViewModel @Inject constructor(
 
     private fun signIn(credential: PhoneAuthCredential) {
         viewModelScope.launch {
-            signInWithPhoneCredentialUseCase(credential).collect { result ->
-                when (result) {
-                    is NetworkResult.Loading -> {}
-                    is NetworkResult.Success -> {}
-                    is NetworkResult.Error -> {}
+            val result = signInWithPhoneCredentialUseCase(credential)
+
+            when (result) {
+                is NetworkResult.Error -> {
+                }
+
+                is NetworkResult.Success -> {
                 }
             }
         }
