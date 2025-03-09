@@ -9,6 +9,7 @@ import androidx.navigation.compose.navigation
 import com.example.firebaseauth.presentation.country_code_selection_screen.CountryCodeSelectionScreen
 import com.example.firebaseauth.presentation.finish_screen.FinishScreen
 import com.example.firebaseauth.presentation.login_screen.PhoneNumberInputScreen
+import com.example.firebaseauth.presentation.navigation.destinations.AuthDestinations
 import com.example.firebaseauth.presentation.otp_verification_screen.OtpVerificationScreen
 
 fun NavGraphBuilder.addAuthRoute(navController: NavController) {
@@ -63,4 +64,6 @@ fun NavGraphBuilder.finishScreenDestination() {
         FinishScreen()
     }
 }
+
+
 

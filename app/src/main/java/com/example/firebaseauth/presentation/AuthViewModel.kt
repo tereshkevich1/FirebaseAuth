@@ -31,7 +31,7 @@ class AuthViewModel @Inject constructor(
     private var _authState = MutableStateFlow<AuthUiState>(AuthUiState.Idle)
     val authState = _authState.asStateFlow()
 
-    private var storedVerificationId: String? = ""
+    private var storedVerificationId: String? = null
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {

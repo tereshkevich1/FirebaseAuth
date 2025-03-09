@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.example.firebaseauth.presentation.navigation.destinations.SplashDestinations
 
 @Composable
 fun AppNavGraph(
@@ -12,7 +13,7 @@ fun AppNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = AuthDestinations.AuthNav,
+        startDestination = SplashDestinations.SplashNav,
         enterTransition = { enterSlideTransition() },
         exitTransition = { exitSlideTransition() },
         popEnterTransition = { popEnterSlideTransition() },
@@ -20,6 +21,7 @@ fun AppNavGraph(
         modifier = modifier
     ) {
         addAuthRoute(navController)
+        addSplashRoute(navController)
     }
 }
 

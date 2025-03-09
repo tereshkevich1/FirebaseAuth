@@ -28,3 +28,5 @@ val PrimaryButtonContentColor = Color(0xFFFFFFFF)
 
 val BorderColor = Color(0xFFF0F0F0)
 
+val LogoTextColor = Color(0xFF3983EC)
+

@@ -26,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.firebaseauth.R
 import com.example.firebaseauth.ui.theme.DpSpSize
 import com.example.firebaseauth.ui.theme.HintTextColor
+import com.example.firebaseauth.ui.theme.PrimaryButtonContainerColor
 import com.example.firebaseauth.ui.theme.PrimaryTextColor
 
 @Composable
@@ -76,6 +77,7 @@ fun CountryItem(
             Spacer(modifier = Modifier.weight(1f))
             Icon(
                 painter = painterResource(R.drawable.tick_circle),
+                tint = PrimaryButtonContainerColor,
                 contentDescription = null
             )
         }
