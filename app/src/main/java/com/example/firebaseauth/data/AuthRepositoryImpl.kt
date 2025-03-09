@@ -16,7 +16,7 @@ class AuthRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : A
             val result = auth.signInWithCredential(cred).await()
             val user = result.user
             if (user != null) {
-                Log.d(TAG, "signInWithCredential:success")
+                Log.d(TAG, "signInWithCredential:success $user")
                 NetworkResult.Success(user)
             } else {
                 Log.w(TAG, "signInWithCredential:no user found")
@@ -35,5 +35,5 @@ class AuthRepositoryImpl @Inject constructor(private val auth: FirebaseAuth) : A
 
 sealed class NetworkResult<T : Any> {
     class Success<T : Any>(val data: T) : NetworkResult<T>()
-    class Error<T : Any>(val e: Throwable) : NetworkResult<T>()
+    class Error<T : Any>(val e: Exception) : NetworkResult<T>()
 }

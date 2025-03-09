@@ -7,6 +7,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import com.example.firebaseauth.presentation.country_code_selection_screen.CountryCodeSelectionScreen
+import com.example.firebaseauth.presentation.finish_screen.FinishScreen
 import com.example.firebaseauth.presentation.login_screen.PhoneNumberInputScreen
 import com.example.firebaseauth.presentation.otp_verification_screen.OtpVerificationScreen
 
@@ -15,6 +16,7 @@ fun NavGraphBuilder.addAuthRoute(navController: NavController) {
         phoneInputDestination(navController)
         countryCodeSelectionDestination(navController)
         otpVerificationDestination(navController)
+        finishScreenDestination()
     }
 }
 
@@ -32,7 +34,14 @@ fun NavGraphBuilder.countryCodeSelectionDestination(navController: NavController
 
 fun NavGraphBuilder.otpVerificationDestination(navController: NavController) {
     composable<AuthDestinations.OtpVerificationScreen> {
-        OtpVerificationScreen(onBack = { navController.popBackStack() })
+        val parentEntry = remember { navController.getBackStackEntry(AuthDestinations.AuthNav) }
+        OtpVerificationScreen(
+            onBack = { navController.popBackStack() },
+            onVerificationSuccess = { navController.navigate(AuthDestinations.FinishScreen) },
+            authViewModel = hiltViewModel(parentEntry),
+            phoneNumberViewModel = hiltViewModel(parentEntry),
+            countryCodeViewModel = hiltViewModel(parentEntry)
+        )
     }
 }
 
@@ -43,8 +52,15 @@ fun NavGraphBuilder.phoneInputDestination(navController: NavController) {
             onCountryCodeButtonClick = { navController.navigate(AuthDestinations.CountryCodeSelectionScreen) },
             onContinueButtonClick = { navController.navigate(AuthDestinations.OtpVerificationScreen) },
             countryCodeViewModel = hiltViewModel(parentEntry),
-            phoneNumberViewModel = hiltViewModel(parentEntry)
+            phoneNumberViewModel = hiltViewModel(parentEntry),
+            authViewModel = hiltViewModel(parentEntry)
         )
+    }
+}
+
+fun NavGraphBuilder.finishScreenDestination() {
+    composable<AuthDestinations.FinishScreen> {
+        FinishScreen()
     }
 }
 

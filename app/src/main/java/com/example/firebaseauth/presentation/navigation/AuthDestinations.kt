@@ -14,4 +14,7 @@ sealed class AuthDestinations {
 
     @Serializable
     data object OtpVerificationScreen : AuthDestinations()
+
+    @Serializable
+    data object FinishScreen: AuthDestinations()
 }

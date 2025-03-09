@@ -18,4 +18,6 @@ class CountryCodeViewModel @Inject constructor() : ViewModel() {
             newCountry
         }
     }
+
+    fun getCountryCode() = country.value.code
 }
