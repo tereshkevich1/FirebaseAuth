@@ -1,5 +1,6 @@
 package com.example.firebaseauth.presentation.login_screen
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,10 +13,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.firebaseauth.R
+import com.example.firebaseauth.presentation.AuthViewModel
 import com.example.firebaseauth.presentation.CountryCodeViewModel
 import com.example.firebaseauth.presentation.login_screen.components.PhoneNumberInputRow
 import com.example.firebaseauth.presentation.login_screen.components.PrimaryButton
-import com.example.firebaseauth.presentation.otp_verification_screen.components.formatResendText
 import com.example.firebaseauth.presentation.util.components.HeaderWithDescription
 import com.example.firebaseauth.ui.theme.DpSpSize
 import com.example.firebaseauth.ui.theme.SurfaceBackground
@@ -25,13 +26,16 @@ fun PhoneNumberInputScreen(
     onCountryCodeButtonClick: () -> Unit,
     onContinueButtonClick: () -> Unit,
     countryCodeViewModel: CountryCodeViewModel,
-    phoneNumberViewModel: PhoneNumberViewModel
+    phoneNumberViewModel: PhoneNumberViewModel,
+    authViewModel: AuthViewModel
 ) {
     val country by countryCodeViewModel.country.collectAsState()
     val phoneNumber = phoneNumberViewModel.phoneNumber
 
     val horizontalPadding = DpSpSize.screenHorizontalPadding
     val topPadding = DpSpSize.screenTopPadding
+
+    val currentActivity = LocalActivity.current
 
     Column(
         modifier = Modifier
@@ -63,7 +67,12 @@ fun PhoneNumberInputScreen(
         Spacer(modifier = Modifier.height(DpSpSize.paddingMedium))
 
         PrimaryButton(
-            onClick = onContinueButtonClick,
+            onClick = {
+                onContinueButtonClick()
+                currentActivity?.let {
+                    authViewModel.startPhoneNumberVerification(country.code + phoneNumber, it)
+                }
+            },
             enabled = phoneNumberViewModel.isPhoneNumberComplete(country.phoneNumberLength),
             text = stringResource(R.string.continue_text)
         )

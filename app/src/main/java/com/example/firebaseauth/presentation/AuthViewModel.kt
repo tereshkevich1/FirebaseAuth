@@ -11,10 +11,13 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthMissingActivityForRecaptchaException
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -25,7 +28,10 @@ class AuthViewModel @Inject constructor(
     private val signInWithPhoneCredentialUseCase: SignInWithPhoneCredentialUseCase
 ) : ViewModel() {
 
-    private var storedVerificationId: String? = ""
+    private var _authState = MutableStateFlow<AuthUiState>(AuthUiState.Idle)
+    val authState = _authState.asStateFlow()
+
+    private var storedVerificationId: String? = null
     private var resendToken: PhoneAuthProvider.ForceResendingToken? = null
     private var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks =
         object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -75,7 +81,7 @@ class AuthViewModel @Inject constructor(
     fun verifyPhoneNumberWithCode(code: String) {
         storedVerificationId?.let { verificationId ->
             val credential = PhoneAuthProvider.getCredential(verificationId, code)
-            // signIn(credential)
+            signIn(credential)
         }
     }
 
@@ -91,14 +97,10 @@ class AuthViewModel @Inject constructor(
 
     private fun signIn(credential: PhoneAuthCredential) {
         viewModelScope.launch {
-            val result = signInWithPhoneCredentialUseCase(credential)
+            when (val result = signInWithPhoneCredentialUseCase(credential)) {
+                is NetworkResult.Error -> _authState.value = AuthUiState.Error(result.e)
 
-            when (result) {
-                is NetworkResult.Error -> {
-                }
-
-                is NetworkResult.Success -> {
-                }
+                is NetworkResult.Success -> _authState.value = AuthUiState.Success(result.data)
             }
         }
     }
@@ -106,4 +108,10 @@ class AuthViewModel @Inject constructor(
     companion object {
         private const val TAG = "PhoneAuthVM"
     }
+}
+
+sealed class AuthUiState {
+    data class Success(val user: FirebaseUser) : AuthUiState()
+    data class Error(val e: Exception) : AuthUiState()
+    data object Idle : AuthUiState()
 }

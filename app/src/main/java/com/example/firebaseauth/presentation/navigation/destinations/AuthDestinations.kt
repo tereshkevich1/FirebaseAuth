@@ -1,4 +1,4 @@
-package com.example.firebaseauth.presentation.navigation
+package com.example.firebaseauth.presentation.navigation.destinations
 
 import kotlinx.serialization.Serializable
 
@@ -14,4 +14,9 @@ sealed class AuthDestinations {
 
     @Serializable
     data object OtpVerificationScreen : AuthDestinations()
+
+    @Serializable
+    data object FinishScreen : AuthDestinations()
 }
+
+

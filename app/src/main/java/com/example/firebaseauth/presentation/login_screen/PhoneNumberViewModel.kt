@@ -21,7 +21,6 @@ class PhoneNumberViewModel : ViewModel() {
     fun isPhoneNumberComplete(phoneNumberLength: Int): Boolean =
         phoneNumber.length == phoneNumberLength
 
-
     fun resetPhoneNumber() {
         phoneNumber = ""
     }
